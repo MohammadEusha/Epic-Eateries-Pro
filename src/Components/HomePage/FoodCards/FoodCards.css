@@ -1,0 +1,28 @@
+.focus {
+  transition: transform 0.3s;
+}
+
+.focus:hover {
+  transform: scale(1.09);
+}
+
+.card-bg {
+  position: relative;
+  background-image: url("../../../Images/43589.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  z-index: 1;
+}
+.card-bg::before {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #0a0b1a;
+  opacity: 0.7;
+  height: 100%;
+  z-index: -1;
+}
