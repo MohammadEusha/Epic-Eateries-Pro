@@ -1,10 +1,10 @@
 import React from 'react';
-import { Navbar } from 'react-bootstrap';
 import About from '../About/About';
 import Appbar from '../Appbar/Appbar';
 import FoodCards from '../FoodCards/FoodCards';
 import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
+import Review from '../Review/Review';
 
 const Home = () => {
     return (
@@ -13,6 +13,7 @@ const Home = () => {
             <Header></Header>
             <About></About>
             <FoodCards></FoodCards>
+            <Review></Review>
             <Footer />
         </div>
     );

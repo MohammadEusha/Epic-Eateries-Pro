@@ -13,6 +13,8 @@ import Home from './Components/HomePage/Home/Home';
 import Confirm from './Components/ConfirmationPage/Confirm/Confirm';
 import PrivateRoute from './Components/LoginPage/PrivateRoute/PrivateRoute';
 import Dashboard from './Components/DashboardPage/Dashboard/Dashboard';
+import AddReviews from './Components/DashboardPage/AddReviews/AddReviews';
+import ManageFoods from './Components/DashboardPage/ManageFoods/ManageFoods';
 export const UserContext = createContext()
 function App() {
   const [loggedInUser, setLoggedInUser] = useState({})
@@ -26,9 +28,15 @@ function App() {
           <Route path="/login">
             <LogIn />
           </Route>
-          <Route path="/dashboard">
+          <PrivateRoute path="/dashboard">
             <Dashboard />
-          </Route>
+          </PrivateRoute>
+          <PrivateRoute path="/manage">
+            <ManageFoods />
+          </PrivateRoute>
+          <PrivateRoute path="/addReviews">
+            <AddReviews />
+          </PrivateRoute>
           <PrivateRoute path="/confirm/:foodName">
             <Confirm />
           </PrivateRoute>

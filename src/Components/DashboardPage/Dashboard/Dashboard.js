@@ -10,7 +10,7 @@ import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { addFoods } from '../../Redux/Action/foodAction';
 import Swal from 'sweetalert2';
-import { Form } from 'react-bootstrap';
+import { Nav, Navbar } from 'react-bootstrap';
 
 const Dashboard = () => {
     const [loggedInUser, setLoggedInUser] = useContext(UserContext)
@@ -44,7 +44,7 @@ const Dashboard = () => {
                 Swal.fire({
                     position: 'top-center',
                     icon: 'success',
-                    title: 'Thanks For Your Valuable Review.',
+                    title: 'New Food Has Been Added.',
                     showConfirmButton: false,
                     timer: 1500
                 })
@@ -71,37 +71,23 @@ const Dashboard = () => {
 
     return (
         <div style={{ backgroundColor: "#12161f", height: "925px", color: "white" }}>
-            <nav class="navbar  navbar-expand-lg navbar-dark bg-dark fixed-top">
-                <div class="container-fluid">
-                    <div className="col-md-6 ms-3">
-                        <img className="transaction-area " style={{ height: "50px", }} src={logo} alt="" />
-                        <a className="navbar-brand color ms-3 h1" href="#home">Epic Eateries</a>
-                    </div>
-                    <button id="nav-toggle-button" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse ms-auto" id="navbarNav">
-                        <ul class="navbar-nav h5">
-                            {display}
-                            <li class="nav-item">
-                                <Link style={{ textDecoration: 'none' }} class="nav-link color" to="/home">Home</Link>
-                            </li>
-                            <li class="nav-item">
-                                <Link style={{ textDecoration: 'none' }} className="nav-link color" to="/dashboard">Add Products</Link>
-                            </li>
-                            <li class="nav-item">
-                                <Link style={{ textDecoration: 'none' }} className="nav-link color" to="/manage">Manage Products</Link>
-                            </li>
-                            <li class="nav-item">
-                                <Link style={{ textDecoration: 'none' }} className="nav-link color" to="/addReviews">Add Reviews</Link>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
+            <Navbar style={{ backgroundColor: "#050c1a", color: "white" }} collapseOnSelect expand="lg" variant="dark" fixed="top">
+                <img style={{ width: '50px' }} src={logo} alt="" />
+                <Navbar.Brand href="#home"><strong className="pl-1 h2">Epic Eateries</strong></Navbar.Brand>
+                <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+                <Navbar.Collapse id="responsive-navbar-nav">
+                    <Nav className="ml-auto">
+                        <Nav.Link as={Link} to='/home' href="#Home"><strong class="h4">Home</strong></Nav.Link>
+                        <Nav.Link as={Link} to='/dashboard' href="#SignIn"><strong class="h4">Add Products</strong></Nav.Link>
+                        <Nav.Link as={Link} to='/manage' href="#Orders"><strong class="h4">Manage Products</strong></Nav.Link>
+                        <Nav.Link as={Link} to='/addReviews' href="#SignIn"><strong class="h4">Add Reviews</strong></Nav.Link>
+
+                    </Nav>
+                </Navbar.Collapse>
+            </Navbar>
 
             <div className="text-center mt-5 pt-5">
-                <h1 className="mt-5 pt-5">Add Products Here ....!!!!</h1>
+                <h1 className="mt-5 pt-5">Add Foods Here ....!!!!</h1>
             </div>
 
             <form className="row mt-5 m-5" onSubmit={handleSubmit(onSubmit)}>
@@ -118,12 +104,8 @@ const Dashboard = () => {
                     <input style={{ backgroundColor: "#050c1f" }} placeholder="Write Product Price" name="price" className="form-control text-light" ref={register} />
                 </div>
                 <div className="col-md-6 mt-3">
-                    <Form.Group controlId="formFileLg" className="mb-3">
-                        <Form.Label>Large file input example</Form.Label>
-                        <Form.Control style={{ backgroundColor: "#050c1f" }} type="file" size="lg" />
-                    </Form.Group>
                     <label className="form-label"><h4>Insert Product Image</h4></label>
-                    <input style={{ backgroundColor: "#050c1f" }} className="form-control text-light" type="file" onChange={handleImageUpload} id="formFile" />
+                    <input style={{ backgroundColor: "#050c1f" }} className="form-control text-light py-1 px-0 pb-0" type="file" onChange={handleImageUpload} id="formFile" />
                 </div>
                 <div className="col-12 d-grid ">
                     <button className="mt-4 btn btn-danger btn-lg btn-block" type="submit" ><FontAwesomeIcon icon={faPlusCircle} />  Add Product</button>
